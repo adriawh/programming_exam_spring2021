@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import ntnu.adriawh.exception.FileTypeException;
 import ntnu.adriawh.model.PostalCode;
 import ntnu.adriawh.persistance.TxtReader;
 
@@ -28,20 +29,27 @@ public class App extends Application {
         launch();
     }
 
-
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
         TxtReader reader = new TxtReader();
-        register = reader.readRegister("src/main/resources/ntnu/adriawh/Postnummerregister-ansi.txt");
+        try{
+            register = reader.readRegister("src/main/resources/ntnu/adriawh/Postnummerregister-ansi.txt");
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("primary" + ".fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.setOnCloseRequest(event ->{
+                exit();
+                event.consume();
+            });
+            stage.show();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("primary" + ".fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-        stage.setOnCloseRequest(event ->{
-            exit();
-            event.consume();
-        });
-        stage.show();
+        }catch (IOException | FileTypeException e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("There was an error starting the application");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     /**
@@ -57,5 +65,4 @@ public class App extends Application {
             System.exit(1);
         }
     }
-
 }
