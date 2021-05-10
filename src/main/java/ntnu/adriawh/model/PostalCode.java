@@ -2,16 +2,16 @@ package ntnu.adriawh.model;
 
 import java.util.Objects;
 
-public class ZipCode {
+public class PostalCode {
     private final int code;
     private final String postOffice;
     private final String municipalCode;
     private final String municipalityName;
-    private final char category;
+    private final String category;
 
 
-    public ZipCode(int zipCode, String postOffice, String municipalCode, String municipalityName, char category) {
-        this.code = zipCode;
+    public PostalCode(int code, String postOffice, String municipalCode, String municipalityName, String category) {
+        this.code = code;
         this.postOffice = postOffice;
         this.municipalCode = municipalCode;
         this.municipalityName = municipalityName;
@@ -30,7 +30,7 @@ public class ZipCode {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ZipCode zipCode = (ZipCode) o;
+        PostalCode zipCode = (PostalCode) o;
         return code == zipCode.code;
     }
 
