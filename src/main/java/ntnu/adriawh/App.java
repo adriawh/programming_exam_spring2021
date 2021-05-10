@@ -2,37 +2,60 @@ package ntnu.adriawh;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import ntnu.adriawh.model.PostalCode;
+import ntnu.adriawh.persistance.TxtReader;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
-    private static Scene scene;
+    private static ArrayList<PostalCode> register;
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+    public static ArrayList<PostalCode> getRegister() {
+        return register;
     }
 
     public static void main(String[] args) {
         launch();
+    }
+
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        TxtReader reader = new TxtReader();
+        register = reader.readRegister("src/main/resources/ntnu/adriawh/Postnummerregister-ansi.txt");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("primary" + ".fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.setOnCloseRequest(event ->{
+            exit();
+            event.consume();
+        });
+        stage.show();
+    }
+
+    /**
+     * Method called when the system is to close. User is met with confirmation dialog to
+     * confirm if this is intended.
+     */
+    public static void exit(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit confirmation");
+        alert.setHeaderText("Are you sure you want to exit the application");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            System.exit(1);
+        }
     }
 
 }

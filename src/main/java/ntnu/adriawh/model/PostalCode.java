@@ -5,12 +5,12 @@ import java.util.Objects;
 public class PostalCode {
     private final int code;
     private final String postOffice;
-    private final String municipalCode;
+    private final int municipalCode;
     private final String municipalityName;
     private final String category;
 
 
-    public PostalCode(int code, String postOffice, String municipalCode, String municipalityName, String category) {
+    public PostalCode(int code, String postOffice, int municipalCode, String municipalityName, String category) {
         this.code = code;
         this.postOffice = postOffice;
         this.municipalCode = municipalCode;
@@ -18,12 +18,24 @@ public class PostalCode {
         this.category = category;
     }
 
-    public int getZipCode() {
+    public int getCode() {
         return code;
     }
 
     public String getPostOffice() {
         return postOffice;
+    }
+
+    public int getMunicipalCode() {
+        return municipalCode;
+    }
+
+    public String getMunicipalityName() {
+        return municipalityName;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     @Override
