@@ -4,10 +4,9 @@ package ntnu.adriawh.persistance;
 import ntnu.adriawh.model.PostalCode;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class TxtReader {
 
@@ -18,15 +17,21 @@ public class TxtReader {
      * @return The register read from the given file
      * @throws IOException thrown if there was an error reading the file
      */
-    public HashMap<Integer, PostalCode> readRegister(File file) throws IOException {
+    public ArrayList<PostalCode> readRegister(String file) throws IOException {
 
-        HashMap<Integer, PostalCode> register = new HashMap();
+        ArrayList<PostalCode> register = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String patientData;
-            while ((patientData = reader.readLine()) != null) {
-                String[] data = patientData.split("\t");
-                register.put(Integer.parseInt(data[0]), new PostalCode(Integer.parseInt(data[0]),data[1], data[2],data[3],data[4]));
+            String data;
+            while ((data = reader.readLine()) != null) {
+                String[] splittedData = data.split("\t");
+
+                register.add(new PostalCode(
+                                Integer.parseInt(splittedData[0]), //Postal code
+                                splittedData[1], //post office
+                                Integer.parseInt(splittedData[2]), //municipal code
+                                splittedData[3], //municipality name
+                                splittedData[4])); //category
             }
         }
         return register;
