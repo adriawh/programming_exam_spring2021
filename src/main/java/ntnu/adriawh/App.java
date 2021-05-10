@@ -8,7 +8,7 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import ntnu.adriawh.exception.FileTypeException;
 import ntnu.adriawh.model.PostalCode;
-import ntnu.adriawh.persistance.TxtReader;
+import ntnu.adriawh.persistance.TXTReader;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,9 +31,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        TxtReader reader = new TxtReader();
+        TXTReader reader = new TXTReader();
         try{
-            register = reader.readRegister("src/main/resources/ntnu/adriawh/Postnummerregister-ansi.txt");
+            register = reader.readRegister("src/main/resources/ntnu/adriawh/Postnummerregister-UTF-8.txt");
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("primary" + ".fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             stage.setScene(scene);

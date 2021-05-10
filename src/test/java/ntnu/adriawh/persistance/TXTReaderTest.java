@@ -13,12 +13,12 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TxtReaderTest {
+public class TXTReaderTest {
 
     @Test
     @DisplayName("Reading when correct filetype with correct data given")
     public void positive(){
-        TxtReader reader = new TxtReader();
+        TXTReader reader = new TXTReader();
         ArrayList<PostalCode> test = null;
         try{
             test = reader.readRegister("src/test/java/ntnu/adriawh/persistance/positiveTest.txt");
@@ -32,12 +32,12 @@ public class TxtReaderTest {
     public class negativeTests{
         @Test
         public void wrongFiletype(){
-            TxtReader reader = new TxtReader();
+            TXTReader reader = new TXTReader();
             assertThrows(FileTypeException.class , ()-> reader.readRegister("src/test/java/ntnu/adriawh/persistance/positiveTest.csv"));
         }
         @Test
         public void fileContainingIncompleteData(){
-            TxtReader reader = new TxtReader();
+            TXTReader reader = new TXTReader();
             ArrayList<PostalCode> test = null;
             try{
                 test = reader.readRegister("src/test/java/ntnu/adriawh/persistance/NegativeTest.txt");

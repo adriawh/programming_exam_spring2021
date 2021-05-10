@@ -5,10 +5,13 @@ import ntnu.adriawh.model.PostalCode;
 
 import java.io.*;
 
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 
-public class TxtReader {
+public class TXTReader {
 
     /**
      * Method for reading a register from a txt file.
@@ -16,6 +19,7 @@ public class TxtReader {
      * @param file the file to read data from
      * @return Arraylist containing the data from the txt file
      * @throws IOException thrown if there was an error reading the file
+     * @throws FileTypeException if the given file is not of type .txt
      */
     public ArrayList<PostalCode> readRegister(String file) throws IOException, FileTypeException {
         if(!file.contains(".txt")){
@@ -24,9 +28,11 @@ public class TxtReader {
 
         ArrayList<PostalCode> register = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "Cp1252"))) {
+        try (BufferedReader reader = Files.newBufferedReader(Path.of(file), StandardCharsets.UTF_8)) {
             String data;
+
             while ((data = reader.readLine()) != null) {
+
                 //Splitting the data in each line by tabulator(four spaces)
                 String[] splittedData = data.split("\t");
 
