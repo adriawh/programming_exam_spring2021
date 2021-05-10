@@ -9,6 +9,15 @@ public class PostalCode {
     private final String municipalityName;
     private final String category;
 
+    /**
+     * Class for storing a postal code and its associated information
+     *
+     * @param code the postal code
+     * @param postOffice the associated post office
+     * @param municipalCode the associated municipal code
+     * @param municipalityName the associated municipality name
+     * @param category the category type of the postal code
+     */
 
     public PostalCode(String code, String postOffice, String municipalCode, String municipalityName, String category) {
         this.code = code;
@@ -43,7 +52,7 @@ public class PostalCode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PostalCode zipCode = (PostalCode) o;
-        return code == zipCode.code;
+        return code.equals(zipCode.code);
     }
 
     @Override

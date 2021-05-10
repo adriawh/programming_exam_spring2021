@@ -1,6 +1,8 @@
 package ntnu.adriawh;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -21,14 +23,26 @@ public class App extends Application {
 
     private static ArrayList<PostalCode> register;
 
-    public static ArrayList<PostalCode> getRegister() {
-        return register;
+    /**
+     * Accessor method
+     * @return an observableList of the register
+     */
+    public static ObservableList<PostalCode> getRegisterWrapper() {
+        return FXCollections.observableList(register);
     }
 
     public static void main(String[] args) {
         launch();
     }
 
+    /**
+     * Method ran at launch.
+     * Loads the register from the txt file and launches primary.fxml file.
+     *
+     * If there are thrown any exceptions the user is met with an alert with the error message.
+     *
+     * @param stage the stage to be shown
+     */
     @Override
     public void start(Stage stage) {
         TXTReader reader = new TXTReader();
