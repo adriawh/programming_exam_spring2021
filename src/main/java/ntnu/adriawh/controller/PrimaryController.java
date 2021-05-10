@@ -1,4 +1,4 @@
-package ntnu.adriawh;
+package ntnu.adriawh.controller;
 
 import java.util.stream.Collectors;
 
@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import ntnu.adriawh.App;
 import ntnu.adriawh.model.PostalCode;
 
 public class PrimaryController {
@@ -38,14 +39,20 @@ public class PrimaryController {
     private ObservableList<PostalCode> register;
 
     public void initialize() {
+
         columnFactory();
-        register = FXCollections.observableList(App.getRegister());
+        register = App.getRegisterWrapper();
         tableView.setItems(register);
 
+        //Updates the tableview everytime there is a change in the searchBar
         searchField.textProperty().addListener((observable, oldValue, newValue) -> updateList());
     }
 
 
+    /**
+     * Updates the list based on the input from the user in the searchBar text field.
+     * If the input contains numbers it checks the postal codes, else it searches by postal office name
+     */
     private void updateList(){
         if(searchField.getText().matches(".*\\d.*")){
             tableView.setItems(FXCollections.observableArrayList(register.stream()
