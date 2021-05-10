@@ -30,12 +30,15 @@ public class TXTReaderTest {
 
     @Nested
     public class negativeTests{
+
         @Test
+        @DisplayName("Reading from a non txt file")
         public void wrongFiletype(){
             TXTReader reader = new TXTReader();
             assertThrows(FileTypeException.class , ()-> reader.readRegister("src/test/java/ntnu/adriawh/persistance/positiveTest.csv"));
         }
         @Test
+        @DisplayName("Reading from a file containing lines of incomplete data")
         public void fileContainingIncompleteData(){
             TXTReader reader = new TXTReader();
             ArrayList<PostalCode> test = null;
@@ -45,6 +48,14 @@ public class TXTReaderTest {
                 fail(e);
             }
             assertEquals(2, test.size());
+        }
+        @Test
+        @DisplayName("Reading from an empty file")
+        public void emptyFile(){
+            TXTReader reader = new TXTReader();
+            ArrayList<PostalCode> test = null;
+
+            assertThrows(IOException.class, ()-> reader.readRegister("src/test/java/ntnu/adriawh/persistance/emptyFile.txt"));
         }
     }
 

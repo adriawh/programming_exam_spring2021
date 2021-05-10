@@ -22,6 +22,7 @@ public class TXTReader {
      * @throws FileTypeException if the given file is not of type .txt
      */
     public ArrayList<PostalCode> readRegister(String file) throws IOException, FileTypeException {
+
         if(!file.contains(".txt")){
             throw new FileTypeException("The given file is not txt");
         }
@@ -30,7 +31,6 @@ public class TXTReader {
 
         try (BufferedReader reader = Files.newBufferedReader(Path.of(file), StandardCharsets.UTF_8)) {
             String data;
-
             while ((data = reader.readLine()) != null) {
 
                 //Splitting the data in each line by tabulator(four spaces)
@@ -48,6 +48,12 @@ public class TXTReader {
                 }
             }
         }
-        return register;
+
+        //If the register is empty after reading thru the file, an IOException is thrown
+        if(register.isEmpty()){
+            throw new IOException("Didnt find any data in the given file");
+        }else{
+            return register;
+        }
     }
 }
