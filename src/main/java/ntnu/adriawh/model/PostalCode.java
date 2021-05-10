@@ -3,14 +3,14 @@ package ntnu.adriawh.model;
 import java.util.Objects;
 
 public class PostalCode {
-    private final int code;
+    private final String code;
     private final String postOffice;
-    private final int municipalCode;
+    private final String municipalCode;
     private final String municipalityName;
     private final String category;
 
 
-    public PostalCode(int code, String postOffice, int municipalCode, String municipalityName, String category) {
+    public PostalCode(String code, String postOffice, String municipalCode, String municipalityName, String category) {
         this.code = code;
         this.postOffice = postOffice;
         this.municipalCode = municipalCode;
@@ -18,7 +18,7 @@ public class PostalCode {
         this.category = category;
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
@@ -26,7 +26,7 @@ public class PostalCode {
         return postOffice;
     }
 
-    public int getMunicipalCode() {
+    public String getMunicipalCode() {
         return municipalCode;
     }
 
