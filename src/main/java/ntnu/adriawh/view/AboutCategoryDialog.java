@@ -5,7 +5,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import ntnu.adriawh.CategoryInformation;
 
 /**
  * Dialog to show descriptions about each category contained in the tableView of the application
@@ -26,32 +25,32 @@ public class AboutCategoryDialog extends Dialog<String> {
         grid.setPadding(new Insets(20, 150, 10, 10));
 
 
-        Label BLabel= new Label("B:");
-        Label B = new Label(CategoryInformation.get("B"));
+        Label bLabel= new Label("B:");
+        Label bInformation = new Label(CategoryInformation.get("B"));
 
-        Label FLabel= new Label("F:");
-        Label F = new Label(CategoryInformation.get("F"));
+        Label fLabel= new Label("F:");
+        Label fInformation = new Label(CategoryInformation.get("F"));
 
-        Label GLabel= new Label("G:");
-        Label G = new Label(CategoryInformation.get("G"));
+        Label gLabel= new Label("G:");
+        Label gInformation = new Label(CategoryInformation.get("G"));
 
-        Label PLabel= new Label("P:");
-        Label P = new Label(CategoryInformation.get("P"));
+        Label pLabel= new Label("P:");
+        Label pInformation = new Label(CategoryInformation.get("P"));
 
-        Label SLabel= new Label("S:");
-        Label S = new Label(CategoryInformation.get("S"));
+        Label sLabel= new Label("S:");
+        Label sInformation = new Label(CategoryInformation.get("S"));
 
 
-        grid.add(BLabel, 1, 1);
-        grid.add(B, 2, 1);
-        grid.add(FLabel, 1, 2);
-        grid.add(F, 2, 2);
-        grid.add(GLabel, 1, 3);
-        grid.add(G, 2, 3);
-        grid.add(PLabel, 1, 4);
-        grid.add(P, 2, 4);
-        grid.add(SLabel, 1, 5);
-        grid.add(S, 2, 5);
+        grid.add(bLabel, 1, 1);
+        grid.add(bInformation, 2, 1);
+        grid.add(fLabel, 1, 2);
+        grid.add(fInformation, 2, 2);
+        grid.add(gLabel, 1, 3);
+        grid.add(gInformation, 2, 3);
+        grid.add(pLabel, 1, 4);
+        grid.add(pInformation, 2, 4);
+        grid.add(sLabel, 1, 5);
+        grid.add(sInformation, 2, 5);
 
         getDialogPane().setContent(grid);
 

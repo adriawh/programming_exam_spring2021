@@ -1,9 +1,17 @@
-package ntnu.adriawh;
+package ntnu.adriawh.view;
 
 /**
- * Class containing a static method returning information about a given category
+ * Utility Class containing a static method returning information about a given category
  */
 public class CategoryInformation {
+
+    /**
+     * If the class is tried to be initialized, an exception is thrown.
+     * Utility classes can not be initialized.
+     */
+    private CategoryInformation(){
+        throw new IllegalStateException("Can not be initiated, since it is a utility class");
+    }
 
     /**
      * @param category the category to return information about
@@ -23,6 +31,6 @@ public class CategoryInformation {
                     return "Service postal code (these postal codes are not used for postal addresses)";
                 default:
                     return "Could not get information about the category";
-            }
+        }
     }
 }

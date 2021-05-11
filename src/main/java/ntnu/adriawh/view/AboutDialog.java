@@ -3,7 +3,6 @@ package ntnu.adriawh.view;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import ntnu.adriawh.CategoryInformation;
 import ntnu.adriawh.model.PostalCode;
 
 
