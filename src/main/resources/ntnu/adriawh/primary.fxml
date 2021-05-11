@@ -13,7 +13,7 @@
    </padding>
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search:" />
-      <TextField fx:id="searchField" promptText="Search for what you want to find" />
+      <TextField fx:id="searchField" promptText="Search by postal code or post office" />
       <TableView fx:id="tableView">
         <columns>
           <TableColumn fx:id="postalCode" prefWidth="75.0" text="postal code" />

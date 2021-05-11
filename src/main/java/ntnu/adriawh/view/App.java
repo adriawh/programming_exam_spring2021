@@ -1,4 +1,4 @@
-package ntnu.adriawh;
+package ntnu.adriawh.view;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -44,7 +44,7 @@ public class App extends Application {
      * @param stage the stage to be shown
      */
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage){
         TXTReader reader = new TXTReader();
         try{
             register = reader.readRegister("src/main/resources/ntnu/adriawh/Postnummerregister-UTF-8.txt");
@@ -58,11 +58,11 @@ public class App extends Application {
             stage.show();
 
         }catch (IOException | FileTypeException e){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText("There was an error starting the application");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+           alert.setTitle("Error");
+           alert.setHeaderText("There was an error starting the application");
+           alert.setContentText(e.getMessage());
+           alert.showAndWait();
         }
     }
 
