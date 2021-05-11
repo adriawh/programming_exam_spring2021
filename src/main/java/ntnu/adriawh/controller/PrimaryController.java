@@ -1,15 +1,12 @@
 package ntnu.adriawh.controller;
 
-import java.util.stream.Collectors;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import ntnu.adriawh.App;
+import ntnu.adriawh.view.App;
 import ntnu.adriawh.model.PostalCode;
 
 public class PrimaryController {
@@ -36,16 +33,15 @@ public class PrimaryController {
     private TableColumn<PostalCode, String> category;
 
 
-    private ObservableList<PostalCode> register;
-
     public void initialize() {
-
         columnFactory();
-        register = App.getRegisterWrapper();
+
+        FilteredList<PostalCode> register = new FilteredList<>(App.getRegisterWrapper());
+
         tableView.setItems(register);
 
         //Updates the tableview everytime there is a change in the searchBar
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> updateList());
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> updateList(register));
     }
 
 
@@ -53,17 +49,12 @@ public class PrimaryController {
      * Updates the list based on the input from the user in the searchBar text field.
      * If the input contains numbers it checks the postal codes, else it searches by postal office name
      */
-    private void updateList(){
+    private void updateList(FilteredList<PostalCode> register){
         if(searchField.getText().matches(".*\\d.*")){
-            tableView.setItems(FXCollections.observableArrayList(register.stream()
-                    .filter(postalCode -> postalCode.getCode().contains(searchField.getText()))
-                    .collect(Collectors.toList())));
+            register.setPredicate(post -> post.getCode().contains(searchField.getText()));
         }else{
-            tableView.setItems(FXCollections.observableArrayList(register.stream()
-                    .filter(postalCode ->
-                            postalCode.getPostOffice().toLowerCase()
-                                    .contains(searchField.getText().toLowerCase()))
-                    .collect(Collectors.toList())));
+            register.setPredicate(post -> post.getPostOffice().toLowerCase()
+                    .contains(searchField.getText().toLowerCase()));
         }
     }
 
