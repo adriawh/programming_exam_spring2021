@@ -1,4 +1,4 @@
-package ntnu.adriawh.view;
+package ntnu.adriawh;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
