@@ -10,7 +10,7 @@ public class CategoryInformation {
      * Utility classes can not be initialized.
      */
     private CategoryInformation(){
-        throw new IllegalStateException("Can not be initiated, since it is a utility class");
+        throw new IllegalStateException("Can not be initiated since it is a utility class");
     }
 
     /**

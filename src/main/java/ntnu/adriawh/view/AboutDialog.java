@@ -1,7 +1,9 @@
 package ntnu.adriawh.view;
 
 import javafx.geometry.Insets;
-import javafx.scene.control.*;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import ntnu.adriawh.model.PostalCode;
 

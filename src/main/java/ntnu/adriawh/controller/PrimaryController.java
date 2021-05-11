@@ -48,7 +48,7 @@ public class PrimaryController {
 
         //Double-click on a postal code will make an information dialog appear
         tableView.setOnMousePressed(mouseEvent -> {
-            if (mouseEvent.isPrimaryButtonDown() && (mouseEvent.getClickCount() == 2)) {
+            if (mouseEvent.isPrimaryButtonDown() && mouseEvent.getClickCount() == 2) {
                 aboutChosen();
             }
         });
@@ -60,7 +60,7 @@ public class PrimaryController {
      * If the input contains numbers it checks the postal codes, else it searches by postal office name
      */
     private void updateList(FilteredList<PostalCode> register){
-        if(searchField.getText().matches(".*\\d.*")){
+        if(searchField.getText().matches(".*\\d.*")){ //Checks for numbers in the search field
             register.setPredicate(post -> post.getCode().contains(searchField.getText()));
         }else{
             register.setPredicate(post -> post.getPostOffice().toLowerCase()
@@ -78,7 +78,6 @@ public class PrimaryController {
         municipalityName.setCellValueFactory(new PropertyValueFactory<>("municipalityName"));
         category.setCellValueFactory(new PropertyValueFactory<>("category"));
     }
-
 
 
     //Application menu
