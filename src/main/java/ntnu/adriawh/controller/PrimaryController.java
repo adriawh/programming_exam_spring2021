@@ -68,5 +68,4 @@ public class PrimaryController {
         municipalityName.setCellValueFactory(new PropertyValueFactory<>("municipalityName"));
         category.setCellValueFactory(new PropertyValueFactory<>("category"));
     }
-
 }

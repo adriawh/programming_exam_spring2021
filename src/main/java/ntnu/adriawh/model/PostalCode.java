@@ -2,6 +2,9 @@ package ntnu.adriawh.model;
 
 import java.util.Objects;
 
+/**
+ * Class for storing a postal code and its associated information.
+ */
 public class PostalCode {
     private final String code;
     private final String postOffice;
@@ -10,8 +13,6 @@ public class PostalCode {
     private final String category;
 
     /**
-     * Class for storing a postal code and its associated information
-     *
      * @param code the postal code
      * @param postOffice the associated post office
      * @param municipalCode the associated municipal code
