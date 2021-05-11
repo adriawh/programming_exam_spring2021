@@ -21,7 +21,7 @@ public class TXTReaderTest {
         TXTReader reader = new TXTReader();
         ArrayList<PostalCode> test = null;
         try{
-            test = reader.readRegister("src/test/java/ntnu/adriawh/persistance/positiveTest.txt");
+            test = reader.readPostalCodeRegister("src/test/java/ntnu/adriawh/persistance/positiveTest.txt");
         }catch (IOException | FileTypeException e){
             fail(e);
         }
@@ -35,7 +35,7 @@ public class TXTReaderTest {
         @DisplayName("Reading from a non txt file")
         public void wrongFiletype(){
             TXTReader reader = new TXTReader();
-            assertThrows(FileTypeException.class , ()-> reader.readRegister("src/test/java/ntnu/adriawh/persistance/positiveTest.csv"));
+            assertThrows(FileTypeException.class , ()-> reader.readPostalCodeRegister("src/test/java/ntnu/adriawh/persistance/positiveTest.csv"));
         }
         @Test
         @DisplayName("Reading from a file containing lines of incomplete data")
@@ -43,7 +43,7 @@ public class TXTReaderTest {
             TXTReader reader = new TXTReader();
             ArrayList<PostalCode> test = null;
             try{
-                test = reader.readRegister("src/test/java/ntnu/adriawh/persistance/NegativeTest.txt");
+                test = reader.readPostalCodeRegister("src/test/java/ntnu/adriawh/persistance/NegativeTest.txt");
             }catch (IOException | FileTypeException e){
                 fail(e);
             }
@@ -53,12 +53,8 @@ public class TXTReaderTest {
         @DisplayName("Reading from an empty file")
         public void emptyFile(){
             TXTReader reader = new TXTReader();
-            ArrayList<PostalCode> test = null;
 
-            assertThrows(IOException.class, ()-> reader.readRegister("src/test/java/ntnu/adriawh/persistance/emptyFile.txt"));
+            assertThrows(IOException.class, ()-> reader.readPostalCodeRegister("src/test/java/ntnu/adriawh/persistance/emptyFile.txt"));
         }
     }
-
-
-
 }

@@ -4,6 +4,7 @@ import java.util.Objects;
 
 /**
  * Class for storing a postal code and its associated information.
+ * All attributes are final, as the applications purpose only is to show information.
  */
 public class PostalCode {
     private final String code;
@@ -48,12 +49,18 @@ public class PostalCode {
         return category;
     }
 
+    /**
+     * Equals method checks if the code pof the postal codes are equal
+     *
+     * @param o the object to be compared to
+     * @return true if the postal code is equal, false if not
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PostalCode zipCode = (PostalCode) o;
-        return code.equals(zipCode.code);
+        PostalCode code1 = (PostalCode) o;
+        return code.equals(code1.code);
     }
 
     @Override

@@ -15,7 +15,6 @@ public class AboutDialog extends Dialog<PostalCode> {
 
         setTitle("Postal code information");
 
-        // Set the button types.
         getDialogPane().getButtonTypes().addAll(ButtonType.CLOSE);
 
 

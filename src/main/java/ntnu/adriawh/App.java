@@ -47,7 +47,7 @@ public class App extends Application {
     public void start(Stage stage){
         TXTReader reader = new TXTReader();
         try{
-            register = reader.readRegister("src/main/resources/ntnu/adriawh/Postnummerregister-UTF-8.txt");
+            register = reader.readPostalCodeRegister("src/main/resources/ntnu/adriawh/Postnummerregister-UTF-8.txt");
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("primary" + ".fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             stage.setScene(scene);

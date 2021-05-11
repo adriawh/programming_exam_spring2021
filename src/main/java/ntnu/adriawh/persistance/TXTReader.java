@@ -10,7 +10,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-
+/**
+ * Class for reading .txt files
+ */
 public class TXTReader {
 
     /**
@@ -21,7 +23,7 @@ public class TXTReader {
      * @throws IOException thrown if there was an error reading the file
      * @throws FileTypeException if the given file is not of type .txt
      */
-    public ArrayList<PostalCode> readRegister(String file) throws IOException, FileTypeException {
+    public ArrayList<PostalCode> readPostalCodeRegister(String file) throws IOException, FileTypeException {
 
         if(!file.contains(".txt")){
             throw new FileTypeException("The given file is not txt");

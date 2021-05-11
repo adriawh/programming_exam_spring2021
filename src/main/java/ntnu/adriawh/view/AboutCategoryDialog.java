@@ -15,7 +15,6 @@ public class AboutCategoryDialog extends Dialog<String> {
 
         setTitle("Category information");
 
-        // Set the button types.
         getDialogPane().getButtonTypes().addAll(ButtonType.CLOSE);
 
 
@@ -53,7 +52,6 @@ public class AboutCategoryDialog extends Dialog<String> {
         grid.add(sInformation, 2, 5);
 
         getDialogPane().setContent(grid);
-
     }
 }
 
