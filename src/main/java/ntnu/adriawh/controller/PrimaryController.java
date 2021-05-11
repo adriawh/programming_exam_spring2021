@@ -36,12 +36,22 @@ public class PrimaryController {
     public void initialize() {
         columnFactory();
 
+        //Fills the tableview wih a tableview so that it easily can be modified with the search bar
         FilteredList<PostalCode> register = new FilteredList<>(App.getRegisterWrapper());
-
         tableView.setItems(register);
+
+        //Text shown when no data matches the search
+        tableView.setPlaceholder(new Label("No postal codes matches your search, consider a different search"));
 
         //Updates the tableview everytime there is a change in the searchBar
         searchField.textProperty().addListener((observable, oldValue, newValue) -> updateList(register));
+
+        //Double-click on a postal code will make an information dialog appear
+        tableView.setOnMousePressed(mouseEvent -> {
+            if (mouseEvent.isPrimaryButtonDown() && (mouseEvent.getClickCount() == 2)) {
+                aboutChosen();
+            }
+        });
     }
 
 
@@ -110,8 +120,7 @@ public class PrimaryController {
             alert.setContentText("Please select a postal code and try again");
             alert.showAndWait();
         }else{
-            AboutDialog about = new AboutDialog(chosen);
-            about.showAndWait();
+            new AboutDialog(chosen).showAndWait();
         }
     }
 
@@ -131,8 +140,7 @@ public class PrimaryController {
      */
     @FXML
     private void categoryExplanation(){
-        AboutCategoryDialog about = new AboutCategoryDialog();
-        about.showAndWait();
+         new AboutCategoryDialog().showAndWait();
     }
 
     /**
@@ -146,7 +154,7 @@ public class PrimaryController {
         alert.setContentText("Click in the searchbar and start searching. You can search either by postal code or post office" +
                 "\n\n You can also scroll thru the register with the scrollbar to the right of the list" +
                 "\n\n To show more detailed information about a postal code, " +
-                "\n click on a code and click the button \" Show more \" ");
+                "\n either double click it or click on a code and click the button \" Show more \" ");
         alert.showAndWait();
     }
 }
