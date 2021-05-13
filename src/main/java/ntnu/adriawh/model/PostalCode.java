@@ -11,7 +11,7 @@ public class PostalCode {
     private final String postOffice;
     private final String municipalCode;
     private final String municipalityName;
-    private final String category;
+    private final char category;
 
     /**
      * @param code the postal code
@@ -21,7 +21,12 @@ public class PostalCode {
      * @param category the category type of the postal code
      */
 
-    public PostalCode(String code, String postOffice, String municipalCode, String municipalityName, String category) {
+    public PostalCode(String code, String postOffice, String municipalCode, String municipalityName, char category) throws IllegalArgumentException{
+        if(code.length() != 4){
+           throw new IllegalArgumentException("A postal code must contain 4 digits");
+        }else if(municipalCode.length() != 4){
+            throw new IllegalArgumentException("A municipal code must contain 4 digits");
+        }
         this.code = code;
         this.postOffice = postOffice;
         this.municipalCode = municipalCode;
@@ -45,7 +50,7 @@ public class PostalCode {
         return municipalityName;
     }
 
-    public String getCategory() {
+    public char getCategory() {
         return category;
     }
 

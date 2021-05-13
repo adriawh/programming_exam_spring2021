@@ -25,19 +25,19 @@ public class AboutCategoryDialog extends Dialog<String> {
 
 
         Label bLabel= new Label("B:");
-        Label bInformation = new Label(CategoryInformation.get("B"));
+        Label bInformation = new Label(CategoryInformation.get('B'));
 
         Label fLabel= new Label("F:");
-        Label fInformation = new Label(CategoryInformation.get("F"));
+        Label fInformation = new Label(CategoryInformation.get('F'));
 
         Label gLabel= new Label("G:");
-        Label gInformation = new Label(CategoryInformation.get("G"));
+        Label gInformation = new Label(CategoryInformation.get('G'));
 
         Label pLabel= new Label("P:");
-        Label pInformation = new Label(CategoryInformation.get("P"));
+        Label pInformation = new Label(CategoryInformation.get('P'));
 
         Label sLabel= new Label("S:");
-        Label sInformation = new Label(CategoryInformation.get("S"));
+        Label sInformation = new Label(CategoryInformation.get('S'));
 
 
         grid.add(bLabel, 1, 1);

@@ -17,17 +17,17 @@ public class CategoryInformation {
      * @param category the category to return information about
      * @return information about the given category
      */
-    public static String get(String category){
+    public static String get(char category){
         switch (category){
-                case "B":
+                case 'B':
                     return "Both street addresses and mailboxes";
-                case "F":
+                case 'F':
                     return "Multiple uses (common)";
-                case "G":
+                case 'G':
                     return "Street addresses (and place addresses), ie \"green mailboxes\"";
-                case "P":
+                case 'P':
                     return "Mailboxes";
-                case "S":
+                case 'S':
                     return "Service postal code (these postal codes are not used for postal addresses)";
                 default:
                     return "Could not get information about the category";
