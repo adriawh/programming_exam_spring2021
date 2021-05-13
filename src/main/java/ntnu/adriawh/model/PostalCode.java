@@ -14,9 +14,9 @@ public class PostalCode {
     private final char category;
 
     /**
-     * @param code the postal code
+     * @param code the postal code, stored as string to maintain 4 digits
      * @param postOffice the associated post office
-     * @param municipalCode the associated municipal code
+     * @param municipalCode the associated municipal code, stored as string to maintain 4 digits
      * @param municipalityName the associated municipality name
      * @param category the category type of the postal code
      */

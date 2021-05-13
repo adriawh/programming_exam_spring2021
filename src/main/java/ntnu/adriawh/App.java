@@ -10,10 +10,10 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import ntnu.adriawh.exception.FileTypeException;
 import ntnu.adriawh.model.PostalCode;
+import ntnu.adriawh.model.PostalCodeRegister;
 import ntnu.adriawh.persistance.TXTReader;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -21,14 +21,14 @@ import java.util.Optional;
  */
 public class App extends Application {
 
-    private static ArrayList<PostalCode> register;
+    private static PostalCodeRegister register;
 
     /**
      * Accessor method
      * @return an observableList of the register
      */
     public static ObservableList<PostalCode> getRegisterWrapper() {
-        return FXCollections.observableList(register);
+        return FXCollections.observableList(register.getRegister());
     }
 
     public static void main(String[] args) {

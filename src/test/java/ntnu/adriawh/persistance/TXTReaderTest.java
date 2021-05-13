@@ -2,13 +2,12 @@ package ntnu.adriawh.persistance;
 
 
 import ntnu.adriawh.exception.FileTypeException;
-import ntnu.adriawh.model.PostalCode;
+import ntnu.adriawh.model.PostalCodeRegister;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,13 +18,13 @@ public class TXTReaderTest {
     @DisplayName("Reading when correct filetype with correct data given")
     public void positive(){
         TXTReader reader = new TXTReader();
-        ArrayList<PostalCode> test = null;
+        PostalCodeRegister test = null;
         try{
             test = reader.readPostalCodeRegister("src/test/java/ntnu/adriawh/persistance/positiveTest.txt");
         }catch (IOException | FileTypeException e){
             fail(e);
         }
-        assertEquals(1, test.size());
+        assertEquals(1, test.getRegister().size());
     }
 
     @Nested
@@ -41,13 +40,13 @@ public class TXTReaderTest {
         @DisplayName("Reading from a file containing lines of incomplete data")
         public void fileContainingIncompleteData(){
             TXTReader reader = new TXTReader();
-            ArrayList<PostalCode> test = null;
+            PostalCodeRegister test = null;
             try{
                 test = reader.readPostalCodeRegister("src/test/java/ntnu/adriawh/persistance/NegativeTest.txt");
             }catch (IOException | FileTypeException e){
                 fail(e);
             }
-            assertEquals(2, test.size());
+            assertEquals(2, test.getRegister().size());
         }
         @Test
         @DisplayName("Reading from an empty file")
